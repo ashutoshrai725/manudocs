@@ -23,7 +23,7 @@ const SupportUs = () => {
             photo: 'https://i.postimg.cc/BbZzcXCb/image.png',
             linkedin: 'https://www.linkedin.com/in/mohitjangirworks/',
             whatsapp: 'https://wa.me/6376400524',
-            email: 'person2@manudocs.com'
+            email: 'mohitjangidworks@gmail.com'
         },
         {
             name: 'Ashutosh Rai',
