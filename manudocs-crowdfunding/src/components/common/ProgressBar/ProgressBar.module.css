@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+}
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--text-sm);
+}
+
+.current {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: var(--text-lg);
+}
+
+.goal {
+    color: var(--light-gray);
+}
+
+.progressBar {
+    width: 100%;
+    background: var(--medium-gray);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.small {
+    height: 8px;
+}
+
+.medium {
+    height: 12px;
+}
+
+.large {
+    height: 20px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-green-dark), var(--primary-green));
+    border-radius: var(--radius-full);
+    transition: width 1s ease-in-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--spacing-md);
+    box-shadow: 0 0 20px var(--green-glow);
+}
+
+.percentage {
+    color: var(--white);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .current {
+        font-size: var(--text-base);
+    }
+
+    .percentage {
+        display: none;
+    }
+}
