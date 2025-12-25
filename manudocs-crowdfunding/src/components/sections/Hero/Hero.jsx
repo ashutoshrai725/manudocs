@@ -43,7 +43,7 @@ const Hero = () => {
                     >
                         <FaShieldAlt className={styles.trustIcon} />
                         <span className={styles.trustText}>
-                            10+ MOU'S officially signed with Exporters
+                            5+ MOU'S officially signed with Exporters
                         </span>
                     </a>
 
