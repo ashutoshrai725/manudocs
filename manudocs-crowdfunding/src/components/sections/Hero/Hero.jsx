@@ -34,12 +34,19 @@ const Hero = () => {
 
 
 
-                    <div className={styles.trustBadge}>
+                    {/* Trust Badge - Clickable Button */}
+                    <a
+                        href="https://drive.google.com/drive/folders/1zec_uRrVMDZWoBkTxMszzbyYQ_8ixJXd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.trustBadge}
+                    >
                         <FaShieldAlt className={styles.trustIcon} />
                         <span className={styles.trustText}>
                             10+ MOU'S officially signed with Exporters
                         </span>
-                    </div>
+                    </a>
+
                 </motion.div>
 
                 {/* Right Side - Video */}
