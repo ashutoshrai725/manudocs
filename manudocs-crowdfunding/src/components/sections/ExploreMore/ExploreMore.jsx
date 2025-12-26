@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 import styles from './ExploreMore.module.css';
-import { FaGlobe } from 'react-icons/fa';
+import { FaGlobe, FaFilePowerpoint, FaFileAlt } from 'react-icons/fa';
 
 const ExploreMore = () => {
     const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+    const [isPptVisible, setIsPptVisible] = useState(false);
+    const pptRef = useRef(null);
 
     // LinkedIn Posts Embeds
     const linkedinPosts = [
@@ -22,6 +24,26 @@ const ExploreMore = () => {
             embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7402275358990942208?compact=1',
         }
     ];
+
+    // PPT Intersection Observer - Autoplay when visible
+    useEffect(() => {
+        if (!pptRef.current) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsPptVisible(entry.isIntersecting);
+            },
+            { threshold: 0.3 }
+        );
+
+        observer.observe(pptRef.current);
+
+        return () => {
+            if (pptRef.current) {
+                observer.unobserve(pptRef.current);
+            }
+        };
+    }, []);
 
     return (
         <section className={styles.exploreMore} id="explore-more" ref={ref}>
@@ -92,11 +114,46 @@ const ExploreMore = () => {
                     </div>
                 </div>
 
+                {/* Presentation Section */}
+                <motion.div
+                    ref={pptRef}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className={styles.presentationSection}
+                >
+                    <div className={styles.presentationHeader}>
+                        <div className={styles.presentationBadge}>
+                            <FaFileAlt />
+                            <span>OUR PITCH</span>
+                        </div>
+
+                    </div>
+
+                    <div className={styles.pptWrapper}>
+                        {isPptVisible && (
+                            <iframe
+                                src="https://docs.google.com/presentation/d/e/2PACX-1vSD6F0Lhy0U29imeCv9zMthFFmhmp9eZLbjlRJ6_qk14awUtr5xxQPRXR67qNWlQgujWeuVdBFHF-Hk/embed?start=true&loop=true&delayms=3000"
+                                frameBorder="0"
+                                allowFullScreen
+                                className={styles.pptFrame}
+                                allow="autoplay"
+                            ></iframe>
+                        )}
+                        {!isPptVisible && (
+                            <div className={styles.pptPlaceholder}>
+                                <FaFilePowerpoint className={styles.placeholderIcon} />
+                                <p>Scroll down to start presentation</p>
+                            </div>
+                        )}
+                    </div>
+                </motion.div>
+
                 {/* Thank You Message */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
+                    transition={{ duration: 0.6, delay: 1 }}
                     className={styles.thankYou}
                 >
                     <p className={styles.thankYouText}>
@@ -110,7 +167,7 @@ const ExploreMore = () => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 0.6, delay: 1 }}
+                    transition={{ duration: 0.6, delay: 1.2 }}
                     className={styles.footer}
                 >
                     <p>© 2025 ManuDocs. All rights reserved.</p>

@@ -293,3 +293,165 @@
         height: 400px;
     }
 }
+
+
+/* Presentation Section */
+.presentationSection {
+    margin-bottom: 4rem;
+}
+
+.presentationHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.presentationBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 1.25rem;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 50px;
+    color: #10b981;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 1rem;
+}
+
+.presentationTitle {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0;
+}
+
+.pptWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 50.625%;
+    /* 16:9 aspect ratio */
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.pptWrapper:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transform: translateY(-4px);
+}
+
+.pptFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.pptPlaceholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.placeholderIcon {
+    font-size: 4rem;
+    color: #10b981;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.pptPlaceholder p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive for Presentation */
+@media (max-width: 1024px) {
+    .pptWrapper {
+        max-width: 750px;
+    }
+
+    .presentationTitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .presentationSection {
+        margin-bottom: 3rem;
+    }
+
+    .pptWrapper {
+        max-width: 100%;
+        padding-bottom: 56.25%;
+        border-radius: 12px;
+    }
+
+    .presentationTitle {
+        font-size: 1.25rem;
+    }
+
+    .placeholderIcon {
+        font-size: 3rem;
+    }
+
+    .pptPlaceholder p {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .presentationHeader {
+        margin-bottom: 1.5rem;
+    }
+
+    .pptWrapper {
+        padding-bottom: 60%;
+    }
+
+    .presentationTitle {
+        font-size: 1.1rem;
+    }
+
+    .presentationBadge {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .placeholderIcon {
+        font-size: 2.5rem;
+    }
+}
